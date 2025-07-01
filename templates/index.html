@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>VN Stock Viewer</title></head>
+<body>
+<h1>VNM Historical Stock Data</h1>
+<form method="get">
+    <label for="symbol">Symbol:</label>
+    <input type="text" id="symbol" name="symbol" value="{{ symbol }}" />
+    <label for="start">Start date:</label>
+    <input type="date" id="start" name="start" value="{{ start_raw }}">
+    <label for="end">End date:</label>
+    <input type="date" id="end" name="end" value="{{ end_raw }}">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Plotly biểu đồ tương tác -->
+{% if plot_div %}
+<div style="width: 100%; max-width: 900px; margin: 30px auto;">
+    {{ plot_div|safe }}
+</div>
+{% else %}
+<div style="text-align:center;color:red;margin:10px 0;">Không có dữ liệu để hiển thị biểu đồ.</div>
+{% endif %}
+<table border="1">
+<tr><th>Date</th><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Volume</th></tr>
+{% for row in data %}
+<tr>
+    <td>{{ row.time }}</td>
+    <td>{{ row.open }}</td>
+    <td>{{ row.high }}</td>
+    <td>{{ row.low }}</td>
+    <td>{{ row.close }}</td>
+    <td>{{ row.volume }}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+</body>
+</html>
