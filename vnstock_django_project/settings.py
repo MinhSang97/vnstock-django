@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['apifincheck.husanenglish.online']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
